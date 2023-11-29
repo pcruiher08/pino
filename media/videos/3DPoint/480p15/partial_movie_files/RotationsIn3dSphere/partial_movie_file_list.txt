@@ -1,0 +1,2 @@
+# This file is used internally by FFMPEG.
+file 'file:/Users/pablo/Documents/Programacion/pino/media/videos/3DPoint/480p15/partial_movie_files/RotationsIn3dSphere/uncached_00000.mp4'
