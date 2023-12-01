@@ -40,6 +40,7 @@ def turn_off_all():
     pixels.show()
 
 
-
+try:
+    turn_on_one_by_one()
 except KeyboardInterrupt:
     turn_off_all()
