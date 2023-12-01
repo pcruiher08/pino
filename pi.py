@@ -23,22 +23,21 @@ def turn_on_one_by_one():
         time.sleep(0.01)  
 
 def turn_off_all():
+
+    pixels.fill((0, 0, 0))
+    pixels.show()
+
+def change_intensity():
     for brightness_value in range(1, 3):
         pixels.brightness = brightness_value / 10.0
         pixels.show()
         time.sleep(0.5) 
 
-    turn_off_all()
-
-
-
-    pixels.fill((0, 0, 0))
-    pixels.show()
-
 try:
     while True:
         turn_on_one_by_one()
         time.sleep(1)  
+        change_intensity()
         turn_off_all()
 
 except KeyboardInterrupt:
