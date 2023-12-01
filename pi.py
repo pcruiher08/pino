@@ -14,6 +14,18 @@ def turn_on_one_by_one():
         time.sleep(0.1)  
 
 def turn_off_all():
+    for brightness_value in range(1, 10):
+        pixels.brightness = brightness_value / 10.0
+        pixels.show()
+        time.sleep(0.5) 
+
+    turn_off_all()
+
+    for brightness_value in range(9, 0, -1):
+        pixels.brightness = brightness_value / 10.0
+        pixels.show()
+        time.sleep(0.5)  
+
     pixels.fill((0, 0, 0))
     pixels.show()
 
