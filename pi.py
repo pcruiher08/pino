@@ -2,14 +2,11 @@ import time
 import board
 import neopixel
 
-# Define the number of NeoPixels and the GPIO pin
 num_pixels = 50
 pixel_pin = board.D18
 
-# Create a NeoPixel object
-pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.2, auto_write=False, pixel_order=neopixel.RGB)
+pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brißghtness=0.2, auto_write=False, pixel_order=neopixel.RGB)
 
-# Define a gamma correction value (adjust as needed)
 gamma = 2.5
 
 def apply_gamma_correction(value):
@@ -34,7 +31,7 @@ def turn_on_one_by_one():
             pixels.brightness = brightness_value / 10.0
             pixels.show()
             time.sleep(0.5)
-            
+
         pixels.show()
         time.sleep(0.1)
 
