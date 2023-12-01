@@ -20,7 +20,7 @@ def turn_on_one_by_one():
             apply_gamma_correction(255),
         )
         pixels.show()
-        time.sleep(0.1)  
+        time.sleep(0.01)  
 
 def turn_off_all():
     for brightness_value in range(1, 10):
