@@ -1,5 +1,0 @@
-# This file is used internally by FFMPEG.
-file 'file:/Users/pablo/Documents/Programacion/pino/media/videos/3DPoint/480p15/partial_movie_files/MovePoint3D/2550307886_4205520711_3081061423.mp4'
-file 'file:/Users/pablo/Documents/Programacion/pino/media/videos/3DPoint/480p15/partial_movie_files/MovePoint3D/2732211768_430972549_1806134506.mp4'
-file 'file:/Users/pablo/Documents/Programacion/pino/media/videos/3DPoint/480p15/partial_movie_files/MovePoint3D/2732211768_3438219438_3696959256.mp4'
-file 'file:/Users/pablo/Documents/Programacion/pino/media/videos/3DPoint/480p15/partial_movie_files/MovePoint3D/2732211768_3438219438_1663408017.mp4'

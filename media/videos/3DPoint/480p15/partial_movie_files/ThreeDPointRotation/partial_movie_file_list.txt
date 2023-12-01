@@ -1,6 +1,0 @@
-# This file is used internally by FFMPEG.
-file 'file:/Users/pablo/Documents/Programacion/pino/media/videos/3DPoint/480p15/partial_movie_files/ThreeDPointRotation/1816792975_2839631542_3038532379.mp4'
-file 'file:/Users/pablo/Documents/Programacion/pino/media/videos/3DPoint/480p15/partial_movie_files/ThreeDPointRotation/639010277_3466392563_3738893607.mp4'
-file 'file:/Users/pablo/Documents/Programacion/pino/media/videos/3DPoint/480p15/partial_movie_files/ThreeDPointRotation/639010277_3785389356_2321511529.mp4'
-file 'file:/Users/pablo/Documents/Programacion/pino/media/videos/3DPoint/480p15/partial_movie_files/ThreeDPointRotation/639010277_910656892_3748167536.mp4'
-file 'file:/Users/pablo/Documents/Programacion/pino/media/videos/3DPoint/480p15/partial_movie_files/ThreeDPointRotation/639010277_910656892_1847585559.mp4'
