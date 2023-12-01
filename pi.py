@@ -2,10 +2,10 @@ import time
 import board
 import neopixel
 
-num_pixels = 50
+num_pixels = 200
 pixel_pin = board.D18
 
-pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brißghtness=0.2, auto_write=False, pixel_order=neopixel.RGB)
+pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.2, auto_write=False, pixel_order=neopixel.RGB)
 
 gamma = 2.5
 
@@ -33,7 +33,7 @@ def turn_on_one_by_one():
             time.sleep(0.5)
 
         pixels.show()
-        time.sleep(0.1)
+        time.sleep(0.01)
 
 def turn_off_all():
     pixels.fill((0, 0, 0))
