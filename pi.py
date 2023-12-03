@@ -28,7 +28,7 @@ def turn_off_all():
     pixels.show()
 
 def change_intensity():
-    for brightness_value in range(1, 5):
+    for brightness_value in range(1, 3):
         pixels.brightness = brightness_value / 10.0
         pixels.show()
         time.sleep(0.5) 
