@@ -17,6 +17,7 @@ def color_cycle(duration=2, steps=50):
         pixels.fill(color)
         pixels.show()
         time.sleep(duration / steps)
+        time.sleep(5)
 
 def turn_off_lights():
     pixels.fill((0, 0, 0))
@@ -28,6 +29,6 @@ try:
         turn_off_lights()
         time.sleep(2) 
 
-        
+
 except KeyboardInterrupt:
     turn_off_lights()
