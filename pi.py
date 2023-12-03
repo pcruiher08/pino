@@ -20,7 +20,7 @@ def turn_on_one_by_one():
             apply_gamma_correction(255),
         )
         pixels.show()
-        time.sleep(0.001)  
+        #time.sleep(0.001)  
 
 def turn_off_all():
 
