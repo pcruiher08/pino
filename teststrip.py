@@ -2,7 +2,7 @@ import time
 import board
 import neopixel
 
-num_pixels = 1
+num_pixels = 100
 pixel_pin = board.D18  
 pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.2, auto_write=False, pixel_order=neopixel.RGB)
 
