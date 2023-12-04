@@ -12,7 +12,13 @@ with open(input_filename, "r") as json_file:
 NUM_PIXELS = len(led_points)  
 PIXEL_PIN = board.D18  
 
-ordered_leds = sorted(led_points, key=lambda point: point["x_corrected"])
+ordered_leds.sort(key=lambda point: point["y_corrected"])
+
+y_levels = set(point["y_corrected"] for point in ordered_leds)
+
+sorted_y_levels = sorted(y_levels)
+
+
 
 for point in ordered_leds:
     point["y_corrected"] = -point["y_corrected"]
@@ -21,13 +27,21 @@ for point in ordered_leds:
 pixels = neopixel.NeoPixel(PIXEL_PIN, NUM_PIXELS, brightness=0.5, auto_write=False)
 
 
+def turn_on_level(level):
+    pixels.fill((0, 0, 0))
 
-for point in ordered_leds:
-    if abs(point["x_corrected"] - point["y_corrected"]) < 10:  
-        color = (255, 255, 255)  
-        pixels[point["id"]] = color  
-        pixels.show()
 
+    level_points = [point for point in led_points if point["y_corrected"] == level]
+
+    for point in level_points:
+        pixel_index = point["id"] % NUM_PIXELS
+        pixels[pixel_index] = (255, 255, 255)  
+
+    pixels.show()  
+    time.sleep(0.5)  
+
+for level in sorted_y_levels:
+    turn_on_level(level)
 
 
 print("showing")
