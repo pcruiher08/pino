@@ -16,10 +16,9 @@ pixels = neopixel.NeoPixel(PIXEL_PIN, NUM_PIXELS, brightness=0.5, auto_write=Fal
 
 
 
-for i, point in enumerate(ordered_leds):
-    pixel_index = int(i * NUM_PIXELS / len(ordered_leds))  
-    red = int((point["x_corrected"] + 50) * 255 / 100)  
-    green = int((point["y_corrected"] + 50) * 255 / 100)  
-    pixels[pixel_index] = (red, green, 0) 
+for point in led_points:
+    if abs(point["x_corrected"] - point["y_corrected"]) < 0.1:  
+        color = (255, 255, 255)  
+        pixels[point["id"]] = color  
 
 pixels.show()
