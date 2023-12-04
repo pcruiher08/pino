@@ -6,7 +6,7 @@ import random
 num_lights = 500
 pixel_pin = board.D18 
 
-pixels = neopixel.NeoPixel(pixel_pin, num_lights, brightness=0.2, auto_write=False)
+pixels = neopixel.NeoPixel(pixel_pin, num_lights, brightness=0.1, auto_write=False)
 
 def set_random_color():
     return (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
