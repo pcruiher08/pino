@@ -20,5 +20,8 @@ for point in led_points:
     if abs(point["x_corrected"] - point["y_corrected"]) < 0.1:  
         color = (255, 255, 255)  
         pixels[point["id"]] = color  
+        pixels.show()
 
-pixels.show()
+
+
+print("showing")
