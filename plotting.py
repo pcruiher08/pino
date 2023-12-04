@@ -12,15 +12,15 @@ with open(input_filename, "r") as json_file:
 NUM_PIXELS = len(led_points)  
 PIXEL_PIN = board.D18  
 
-ordered_leds.sort(key=lambda point: point["y_corrected"])
+led_points.sort(key=lambda point: point["y_corrected"])
 
-y_levels = set(point["y_corrected"] for point in ordered_leds)
+y_levels = set(point["y_corrected"] for point in led_points)
 
 sorted_y_levels = sorted(y_levels)
 
 
 
-for point in ordered_leds:
+for point in led_points:
     point["y_corrected"] = -point["y_corrected"]
     point["x_corrected"] = -point["x_corrected"]
 
