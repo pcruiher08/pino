@@ -16,6 +16,7 @@ ordered_leds = sorted(led_points, key=lambda point: point["x_corrected"])
 
 for point in ordered_leds:
     point["y_corrected"] = -point["y_corrected"]
+    point["x_corrected"] = -point["x_corrected"]
 
 pixels = neopixel.NeoPixel(PIXEL_PIN, NUM_PIXELS, brightness=0.5, auto_write=False)
 
