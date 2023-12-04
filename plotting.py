@@ -12,7 +12,7 @@ PIXEL_PIN = board.D18
 
 ordered_leds = sorted(led_points, key=lambda point: point["x_corrected"])
 
-pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.5, auto_write=False)
+pixels = neopixel.NeoPixel(PIXEL_PIN, num_pixels, brightness=0.5, auto_write=False)
 
 
 
