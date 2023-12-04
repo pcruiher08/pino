@@ -39,7 +39,6 @@ def turn_on_level(level):
         pixels[pixel_index] = (255, 255, 255)  
 
     pixels.show()  
-    time.sleep(0.5)  
 
 for level in sorted_y_levels:
     turn_on_level(level)
