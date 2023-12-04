@@ -1,6 +1,7 @@
 import json
 import board
 import neopixel
+import time
 
 
 input_filename = "led_coordinates.json"
