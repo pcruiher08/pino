@@ -16,11 +16,7 @@ height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height) 
 
 
-def capture_and_process_image():
-    ret, frame = cap.read()
-    if frame is None:
-        print("Error: Unable to capture a frame.")
-        return None
+def capture_and_process_image(frame):
 
     #cv2.imshow("Captura", frame)
     
@@ -38,7 +34,9 @@ def capture_and_process_image():
             centroid_y = int(moments["m01"] / moments["m00"])
 
             print("Centroide:", (centroid_x, centroid_y))
+            cv2.drawContours(frame, contours, -1, (0, 255, 0), 2)
 
+            
             return centroid_x, centroid_y
 
 
@@ -52,14 +50,24 @@ led_points = []
 
 try:
     while True:
+        ret, frame = cap.read()
+        rotated_frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
+
         led_number = int(client_socket.recv(1024).decode())
         print("LED ID:", led_number)
-        centroid = capture_and_process_image()
+        centroid = capture_and_process_image(frame)
 
         if(centroid is not None):
             led_points.append({"id": len(led_points), "x": centroid[0], "y": centroid[1]})
 
+
+            cv2.line(rotated_frame, (centroid[0], 0), (centroid[0], rotated_frame.shape[0]), (255, 0, 255), 8)  
+            cv2.line(rotated_frame, (0, centroid[1]), (rotated_frame.shape[1], centroid[1]), (255, 0, 255), 8)  
+
+            cv2.putText(rotated_frame, f'Coordinates: ({centroid[0]}, {centroid[1]})', (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+            cv2.imshow('Video Feed', rotated_frame)
         print(centroid)
+
         send_acknowledgment()
     
 

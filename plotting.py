@@ -25,6 +25,9 @@ for point in led_points:
     point["y_corrected"] = -point["y_corrected"]
     point["x_corrected"] = -point["x_corrected"]
 
+x_coordinates = [point["y_corrected"] for point in led_points]
+y_coordinates = [-point["x_corrected"] for point in led_points]
+
 pixels = neopixel.NeoPixel(PIXEL_PIN, NUM_PIXELS, brightness=0.5, auto_write=False)
 
 
