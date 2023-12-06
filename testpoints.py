@@ -15,6 +15,9 @@ y_coordinates = [point["y_corrected"] for point in led_points]
 
 plt.scatter(x_coordinates, y_coordinates, marker='o', label='LED Points')
 
+for i in range(len(led_points)):
+    plt.annotate(led_points[i]["id"], (led_points[i]["x_corrected"], led_points[i]["y_corrected"]))
+
 plt.xlabel('X Coordinate')
 plt.ylabel('Y Coordinate')
 plt.title('LED Points in 2D Plane')
