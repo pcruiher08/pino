@@ -40,8 +40,9 @@ def turn_on_level(level):
     for point in level_points:
         pixel_index = point["id"] % NUM_PIXELS
         pixels[pixel_index] = (255, 255, 255)  
-
-        pixels.show()  
+        
+    print(pixels)
+    pixels.show()  
 
 for level in sorted_y_levels:
     turn_on_level(level)
