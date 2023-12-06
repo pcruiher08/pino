@@ -43,8 +43,8 @@ def turn_on_level(level):
     #level_points = [point for point in led_points if point["y_corrected"] == level]
 
     #for point in level_points:
-    pixel_index = point[level] % NUM_PIXELS
-    pixels[pixel_index] = (255, 255, 255)  
+    #pixel_index = point["id"] % NUM_PIXELS
+    pixels[level] = (255, 255, 255)  
 
     pixels.show()  
 
