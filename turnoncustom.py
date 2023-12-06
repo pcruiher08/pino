@@ -1,7 +1,7 @@
 import board
 import neopixel
 
-NUM_PIXELS = len(led_points)  
+NUM_PIXELS = 500
 PIXEL_PIN = board.D18  
 
 pixels = neopixel.NeoPixel(PIXEL_PIN, NUM_PIXELS, brightness=0.5, auto_write=False)
