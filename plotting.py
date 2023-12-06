@@ -20,7 +20,7 @@ PIXEL_PIN = board.D18
 
 
 for point in led_points:
-    point["y_corrected"] = -point["y_corrected"]
+    point["y_corrected"] = point["y_corrected"]
     point["x_corrected"] = point["x_corrected"]
 
 

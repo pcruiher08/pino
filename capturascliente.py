@@ -62,13 +62,13 @@ try:
         centroid = capture_and_process_image(rotated_frame)
 
         if(centroid is not None):
-            led_points.append({"id": len(led_points), "x": centroid[0], "y": centroid[1]})
+            led_points.append({"id": len(led_points), "x": centroid[0], "y": height - centroid[1]})
 
 
             cv2.line(rotated_frame, (centroid[0], 0), (centroid[0], rotated_frame.shape[0]), (255, 0, 255), 8)  
             cv2.line(rotated_frame, (0, centroid[1]), (rotated_frame.shape[1], centroid[1]), (255, 0, 255), 8)  
 
-            cv2.putText(rotated_frame, f'Coordinates: ({centroid[0]}, {centroid[1]})', (200, 200), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 4)
+            cv2.putText(rotated_frame, f'Coordinates: ({centroid[0]}, {height - centroid[1]})', (200, 200), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 4)
         cv2.imshow('Video Feed', rotated_frame)
         print(centroid)
 

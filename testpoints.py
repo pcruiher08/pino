@@ -6,7 +6,7 @@ with open(input_filename, "r") as json_file:
     led_points = json.load(json_file)
 
 for point in led_points:
-    point["y_corrected"] = -point["y_corrected"]
+    point["y_corrected"] = point["y_corrected"]
     point["x_corrected"] = point["x_corrected"]
 
 
