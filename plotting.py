@@ -28,7 +28,7 @@ x_coordinates = [point["x_corrected"] for point in led_points]
 y_coordinates = [point["y_corrected"] for point in led_points]
 
 
-led_points.sort(key=lambda point: point["x_corrected"])
+led_points.sort(key=lambda point: point["y_corrected"])
 equis = [point["id"] for point in led_points]
 
 pixels = neopixel.NeoPixel(PIXEL_PIN, NUM_PIXELS, brightness=0.5, auto_write=False)
