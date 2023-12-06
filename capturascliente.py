@@ -51,11 +51,15 @@ led_points = []
 try:
     while True:
         ret, frame = cap.read()
+
+        if not ret:
+            print("Error")
+            break
         rotated_frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
 
         led_number = int(client_socket.recv(1024).decode())
         print("LED ID:", led_number)
-        centroid = capture_and_process_image(frame)
+        centroid = capture_and_process_image(rotated_frame)
 
         if(centroid is not None):
             led_points.append({"id": len(led_points), "x": centroid[0], "y": centroid[1]})
@@ -64,10 +68,12 @@ try:
             cv2.line(rotated_frame, (centroid[0], 0), (centroid[0], rotated_frame.shape[0]), (255, 0, 255), 8)  
             cv2.line(rotated_frame, (0, centroid[1]), (rotated_frame.shape[1], centroid[1]), (255, 0, 255), 8)  
 
-            cv2.putText(rotated_frame, f'Coordinates: ({centroid[0]}, {centroid[1]})', (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
-            cv2.imshow('Video Feed', rotated_frame)
+            cv2.putText(rotated_frame, f'Coordinates: ({centroid[0]}, {centroid[1]})', (200, 200), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 4)
+        cv2.imshow('Video Feed', rotated_frame)
         print(centroid)
 
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
         send_acknowledgment()
     
 
@@ -94,4 +100,6 @@ finally:
 
 
     cap.release()
+    cv2.destroyAllWindows()
+
     client_socket.close()
