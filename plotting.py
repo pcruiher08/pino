@@ -18,6 +18,7 @@ PIXEL_PIN = board.D18
 
 #sorted_y_levels = sorted(y_levels)
 
+
 for point in led_points:
     point["y_corrected"] = -point["y_corrected"]
     point["x_corrected"] = point["x_corrected"]
@@ -28,6 +29,7 @@ y_coordinates = [point["y_corrected"] for point in led_points]
 
 
 led_points.sort(key=lambda point: point["x_corrected"])
+equis = [point["id"] for point in led_points]
 
 pixels = neopixel.NeoPixel(PIXEL_PIN, NUM_PIXELS, brightness=0.5, auto_write=False)
 
@@ -46,7 +48,7 @@ def turn_on_level(level):
 
     pixels.show()  
 
-for level in sorted_y_levels:
+for level in equis:
     turn_on_level(level)
 
 
