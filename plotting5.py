@@ -11,8 +11,8 @@ def update_pixels():
         brightness = random.uniform(0.7, 1.0) 
         color = [
             int(0 * brightness),  
-            int(255 * brightness),  
-            int(165 * brightness)     
+            int(165 * brightness),  
+            int(255 * brightness)     
         ]
         pixels[i] = tuple(color)
 
