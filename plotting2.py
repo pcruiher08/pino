@@ -7,7 +7,7 @@ import numpy as np
 
 with open('led_coordinates3.json', 'r') as file:
     led_coordinates = json.load(file)
-    
+
 num_pixels = len(led_coordinates)
 pixels = neopixel.NeoPixel(board.D18, num_pixels, auto_write=False)
 
@@ -21,9 +21,9 @@ def update_pixels(frame):
         amplitude = 0.5
         phase = frame / 10.0
         color = [
-            int(255 * amplitude * np.sin(2 * np.pi * frequency * points[i]['x'] + phase)),
-            int(255 * amplitude * np.sin(2 * np.pi * frequency * points[i]['y'] + phase)),
-            int(255 * amplitude * np.sin(2 * np.pi * frequency * (points[i]['x'] + points[i]['y']) + phase))
+            max(0, min(255, int(255 * amplitude * np.sin(2 * np.pi * frequency * points[i]['x'] + phase)))),
+            max(0, min(255, int(255 * amplitude * np.sin(2 * np.pi * frequency * points[i]['y'] + phase)))),
+            max(0, min(255, int(255 * amplitude * np.sin(2 * np.pi * frequency * (points[i]['x'] + points[i]['y']) + phase))))
         ]
         points[i]['color'] = color
 
