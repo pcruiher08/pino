@@ -14,7 +14,7 @@ def update_pixels():
         red = int(226 * brightness)
         green = int(121 * i / (num_pixels / 2)) if i < num_pixels / 2 else int(121 * (1 - (i - num_pixels / 2) / (num_pixels / 2)))
         blue = 35
-        pixels[i] = (red, green, blue)
+        pixels[i] = ( green, red, blue)
 
     pixels.show()
     time.sleep(0.02)
