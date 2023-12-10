@@ -13,9 +13,9 @@ def update_pixels(frame):
         amplitude = 0.5
         phase = frame / 10.0
         color = [
-            max(0, min(255, int(255 * amplitude * np.sin(2 * np.pi * frequency * points[i]['x'] + phase)))),
-            max(0, min(255, int(255 * amplitude * np.sin(2 * np.pi * frequency * points[i]['y'] + phase)))),
-            max(0, min(255, int(255 * amplitude * np.sin(2 * np.pi * frequency * (points[i]['x'] + points[i]['y']) + phase))))
+            max(0, min(255, int(255 * amplitude * np.sin(2 * np.pi * frequency * i + phase)))),
+            max(0, min(255, int(255 * amplitude * np.sin(2 * np.pi * frequency * i + phase)))),
+            max(0, min(255, int(255 * amplitude * np.sin(2 * np.pi * frequency * i + phase))))
         ]
 
         pixels[i] = tuple(color)
