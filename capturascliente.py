@@ -17,11 +17,6 @@ cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
 
 
 def capture_and_process_image(frame):
-
-    #cv2.imshow("Captura", frame)
-    
-    #cv2.waitKey(0)  # Wait for key
-
     gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     _, thresholded_frame = cv2.threshold(gray_frame, 128, 255, cv2.THRESH_BINARY)
     contours, _ = cv2.findContours(thresholded_frame, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
@@ -35,16 +30,15 @@ def capture_and_process_image(frame):
 
             print("Centroide:", (centroid_x, centroid_y))
             cv2.drawContours(frame, contours, -1, (0, 255, 0), 2)
-
             
             return centroid_x, centroid_y
 
 
-
-
 def send_acknowledgment():
-    client_socket.send("ACK".encode())
-
+    try:
+        client_socket.send("ACK".encode())
+    except BrokenPipeError:
+        print("Broken pipe. The server may have closed the connection.")
 
 led_points = []
 
@@ -56,8 +50,17 @@ try:
             print("Error")
             break
         rotated_frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
+        
+        try:
 
-        led_number = int(client_socket.recv(1024).decode())
+            led_number = client_socket.recv(1024).decode()
+            if led_number:
+                led_number = int(led_number)
+            else:
+                print("Received empty string, cannot convert to integer.")
+        except ConnectionResetError:
+            print("Connection reset by peer. Server may have closed the connection.")
+
         print("LED ID:", led_number)
         centroid = capture_and_process_image(rotated_frame)
 
@@ -90,7 +93,7 @@ finally:
         point["x_corrected"] = point["x"] - average_x
         point["y_corrected"] = point["y"] - average_y
 
-    output_filename = "led_coordinates.json"
+    output_filename = "led_coordinates2.json"
     print(len(led_points))
     if(len(led_points) > 258):
         with open(output_filename, "w") as json_file:
