@@ -11,10 +11,10 @@ def update_pixels():
     for i in range(num_pixels):
         brightness = random.uniform(0.4, 1.0)  
 
-        red = int(226 * brightness)
-        green = int(121 * i / (num_pixels / 2)) if i < num_pixels / 2 else int(121 * (1 - (i - num_pixels / 2) / (num_pixels / 2)))
+        red = int(126 * brightness)
+        green = int(255 * i / (num_pixels / 2)) if i < num_pixels / 2 else int(255 * (1 - (i - num_pixels / 2) / (num_pixels / 2)))
         blue = 35
-        pixels[i] = ( green, red, blue)
+        pixels[i] = (red, green, blue)
 
     pixels.show()
     time.sleep(0.02)
