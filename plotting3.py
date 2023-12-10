@@ -19,9 +19,8 @@ def update_pixels(frame):
         ]
 
         pixels[i] = tuple(color)
-
     pixels.show()
-    time.sleep(0.1)
+
 
 num_frames = 100
 for frame in range(num_frames):
