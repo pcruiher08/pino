@@ -39,6 +39,7 @@ def send_acknowledgment():
         client_socket.send("ACK".encode())
     except BrokenPipeError:
         print("Broken pipe. The server may have closed the connection.")
+        return 
 
 led_points = []
 
