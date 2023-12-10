@@ -4,11 +4,14 @@ import neopixel
 import json
 import numpy as np
 
-num_pixels = 500
-pixels = neopixel.NeoPixel(board.D18, num_pixels, auto_write=False)
 
 with open('led_coordinates3.json', 'r') as file:
     led_coordinates = json.load(file)
+    
+num_pixels = len(led_coordinates)
+pixels = neopixel.NeoPixel(board.D18, num_pixels, auto_write=False)
+
+
 
 points = {i: {'x': led_coordinates[i]['x'], 'y': led_coordinates[i]['y'], 'color': [0, 0, 0]} for i in range(num_pixels)}
 
