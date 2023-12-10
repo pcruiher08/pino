@@ -8,11 +8,11 @@ pixels = neopixel.NeoPixel(board.D18, num_pixels, auto_write=False)
 
 def update_pixels():
     for i in range(num_pixels):
-        brightness = random.uniform(0.7, 1.0)  
+        brightness = random.uniform(0.7, 1.0) 
         color = [
-            int(255 * brightness),  
             int(0 * brightness),  
-            int(0 * brightness)     
+            int(255 * brightness),  
+            int(165 * brightness)     
         ]
         pixels[i] = tuple(color)
 
