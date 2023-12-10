@@ -18,7 +18,7 @@ def update_pixels(frame):
 
         hue = map_value(brightness, 0, 1, 0.0, 0.1)
         rgb_color = colorsys.hsv_to_rgb(hue, 1.0, brightness)
-        color = [int(255 * channel) for channel in rgb_color]
+        color = [int(255 * channel) for channel in rgb_color[::-1]]
         pixels[i] = tuple(color)
 
     pixels.show()
