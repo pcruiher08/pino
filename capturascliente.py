@@ -38,8 +38,9 @@ def send_acknowledgment():
     try:
         client_socket.send("ACK".encode())
     except BrokenPipeError:
-        print("Broken pipe. The server may have closed the connection.")
-        return 
+        print("Se rompio la conn.")
+        return False
+    return True
 
 led_points = []
 
@@ -51,16 +52,16 @@ try:
             print("Error")
             break
         rotated_frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
-        
+        original_frame = rotated_frame.copy()
         try:
 
             led_number = client_socket.recv(1024).decode()
             if led_number:
                 led_number = int(led_number)
             else:
-                print("Received empty string, cannot convert to integer.")
+                print("String vacio")
         except ConnectionResetError:
-            print("Connection reset by peer. Server may have closed the connection.")
+            print("Se cerro la con")
 
         print("LED ID:", led_number)
         centroid = capture_and_process_image(rotated_frame)
@@ -72,13 +73,22 @@ try:
             cv2.line(rotated_frame, (centroid[0], 0), (centroid[0], rotated_frame.shape[0]), (255, 0, 255), 8)  
             cv2.line(rotated_frame, (0, centroid[1]), (rotated_frame.shape[1], centroid[1]), (255, 0, 255), 8)  
 
-            cv2.putText(rotated_frame, f'Coordinates: ({centroid[0]}, {height - centroid[1]})', (200, 200), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 4)
-        cv2.imshow('Video Feed', rotated_frame)
+            cv2.putText(rotated_frame, f'Coordenadas: ({centroid[0]}, {height - centroid[1]})', (200, 200), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 4)
+        
+        cv2.putText(original_frame, f'LED #: {led_number}', (200, 200), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 4)
+        
+        concat = cv2.hconcat([rotated_frame, original_frame])
+        
+        
+        cv2.imshow('Video', concat)
         print(centroid)
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
-        send_acknowledgment()
+        ackresponse = send_acknowledgment()
+
+        if not ackresponse:
+            break
     
 
 finally:

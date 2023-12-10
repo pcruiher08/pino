@@ -5,7 +5,7 @@ import neopixel
 num_pixels = 500
 pixel_pin = board.D18  
 
-pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.8, auto_write=False)
+pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.72, auto_write=False)
 
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
