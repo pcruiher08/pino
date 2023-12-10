@@ -4,7 +4,7 @@ import neopixel
 import time
 
 
-input_filename = "led_coordinates.json"
+input_filename = "led_coordinates3.json"
 with open(input_filename, "r") as json_file:
     led_points = json.load(json_file)
 
@@ -33,7 +33,7 @@ equis = [point["id"] for point in led_points]
 
 pixels = neopixel.NeoPixel(PIXEL_PIN, NUM_PIXELS, brightness=0.5, auto_write=False)
 
-print(led_points)
+#print(led_points)
 
 
 def turn_on_level(level):
