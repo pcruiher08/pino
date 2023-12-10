@@ -9,12 +9,12 @@ pixels = neopixel.NeoPixel(board.D18, num_pixels, auto_write=False)
 
 def update_pixels():
     for i in range(num_pixels):
-        brightness = random.uniform(0.4, 1.0)  
-
-        red = int(126 * brightness)
-        green = int(255 * i / (num_pixels / 2)) if i < num_pixels / 2 else int(255 * (1 - (i - num_pixels / 2) / (num_pixels / 2)))
-        blue = 35
+        gradient = i / (num_pixels - 1)
+        red = int(255 * (1 - gradient))
+        green = int(255 * gradient)
+        blue = 0
         pixels[i] = (red, green, blue)
+
 
     pixels.show()
     time.sleep(0.02)
