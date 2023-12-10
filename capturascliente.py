@@ -38,7 +38,7 @@ def send_acknowledgment():
     try:
         client_socket.send("ACK".encode())
     except BrokenPipeError:
-        print("Se rompio la conn.")
+        print("Fin de la conn.")
         return False
     return True
 
@@ -75,7 +75,7 @@ try:
 
             cv2.putText(rotated_frame, f'Coordenadas: ({centroid[0]}, {height - centroid[1]})', (200, 200), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 4)
         
-        cv2.putText(original_frame, f'LED #: {led_number}', (200, 200), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 4)
+        cv2.putText(original_frame, f'LED #{led_number}', (200, 200), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 4)
         
         concat = cv2.hconcat([rotated_frame, original_frame])
         
@@ -103,14 +103,53 @@ finally:
     for point in led_points:
         point["x_corrected"] = point["x"] - average_x
         point["y_corrected"] = point["y"] - average_y
-
-    output_filename = "led_coordinates2.json"
+    
+    file_name = "led_coordinates"
+    output_filename = f"{file_name}3.json"
+    
     print(len(led_points))
     if(len(led_points) > 258):
         with open(output_filename, "w") as json_file:
             json.dump(led_points, json_file, indent=2)
 
         print(f"Guardado en {output_filename}")
+
+
+
+    import json
+    import matplotlib.pyplot as plt
+
+    for point in led_points:
+        point["y_corrected"] = point["y_corrected"]
+        point["x_corrected"] = point["x_corrected"]
+
+
+    x_coordinates = [point["x_corrected"] for point in led_points]
+    y_coordinates = [point["y_corrected"] for point in led_points]
+
+    x_coordinates_original = [point["x"] for point in led_points]
+    y_coordinates_original = [point["y"] for point in led_points]
+
+
+    plt.subplot(1, 2, 1)
+    plt.ylabel('Y Coordinate')
+    plt.title('No correction')
+
+
+    plt.scatter(x_coordinates_original, y_coordinates_original, marker='o')
+
+    plt.subplot(1, 2, 2)
+    plt.scatter(x_coordinates, y_coordinates, marker='o', label='LED Points')
+
+    for i in range(len(led_points)):
+        plt.annotate(led_points[i]["id"], (led_points[i]["x_corrected"], led_points[i]["y_corrected"]))
+
+    plt.xlabel('X Coordinate')
+    plt.title('LED Points in 2D Plane with correction')
+
+    plt.legend()
+
+    plt.show()
 
 
     cap.release()
