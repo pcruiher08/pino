@@ -11,18 +11,27 @@ colors = [
     (255, 0, 0),   #Red
     (0, 255, 0),   #Green
     (0, 0, 255),   #Blue
-    (255, 255, 0), #Yellow
-    (255, 0, 255), #Magenta
-    (0, 255, 255), #Cyan
 ]
 
 def color_variation_animation():
-    for t in range(1000):
+    duration = 10  
+    steps = 100   
+
+    for t in range(steps):
         for i in range(num_pixels):
             color_index = int((i / num_pixels) * len(colors))
-            pixels[i] = colors[color_index]
+            color_start = colors[color_index]
+            color_end = colors[(color_index + 1) % len(colors)]
+
+            interpolation_factor = t / steps
+            red = int(color_start[0] + (color_end[0] - color_start[0]) * interpolation_factor)
+            green = int(color_start[1] + (color_end[1] - color_start[1]) * interpolation_factor)
+            blue = int(color_start[2] + (color_end[2] - color_start[2]) * interpolation_factor)
+
+            pixels[i] = (red, green, blue)
+
         pixels.show()
-    
+        time.sleep(duration / steps)
 
 while True:
     color_variation_animation()
