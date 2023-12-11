@@ -31,7 +31,7 @@ def color_variation_animation():
             pixels[i] = (red, green, blue)
 
         pixels.show()
-        time.sleep(duration / steps)
+        
 
 while True:
     color_variation_animation()
