@@ -15,7 +15,7 @@ colors = [
 ]
 
 def color_variation_animation():
-    duration = 2 
+    duration = 1 
     steps = 100     
 
     for t in range(steps):
