@@ -21,7 +21,7 @@ def color_variation_animation():
     for t in range(steps):
         for i in range(num_pixels):
             hue = (i / num_pixels + t / steps) % 1.0
-            rgb = [int(c * 255) for c in colorsys.hsv_to_rgb(hue * 2, 1.0, 1.0)]
+            rgb = [int(c * 255) for c in colorsys.hsv_to_rgb(240, 1.0, 1.0)]
             pixels[i] = tuple(rgb)
 
         pixels.show()
