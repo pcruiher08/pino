@@ -25,7 +25,7 @@ def color_variation_animation():
             pixels[i] = tuple(rgb)
 
         pixels.show()
-        time.sleep(duration / steps)
+        #time.sleep(duration / steps)
         
 
 while True:
