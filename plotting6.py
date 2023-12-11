@@ -11,7 +11,7 @@ def update_pixels():
     for i in range(num_pixels):
         gradient = i / (num_pixels - 1)
         red = int(255 * (1 - gradient))
-        green = int(255 * gradient * 0.3)
+        green = int(100 * gradient )
         blue = 0
         pixels[num_pixels - i - 1] = (red, green, blue)
 
