@@ -13,7 +13,7 @@ def update_pixels():
         red = int(255 * (1 - gradient)) * 0.3
         green = int(255 * gradient )
         blue = 0
-        pixels[num_pixels - i - 1] = (red, green, blue)
+        pixels[num_pixels - i - 1] = (green, red, blue)
 
     pixels.show()
     time.sleep(0.02)
