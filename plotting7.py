@@ -1,6 +1,7 @@
 import time
 import board
 import neopixel
+import colorsys
 import math
 
 num_pixels = 500
@@ -15,22 +16,16 @@ colors = [
 
 def color_variation_animation():
     duration = 10  
-    steps = 100   
+    steps = 100     
 
     for t in range(steps):
         for i in range(num_pixels):
-            color_index = int((i / num_pixels) * len(colors))
-            color_start = colors[color_index]
-            color_end = colors[(color_index + 1) % len(colors)]
+            hue = (i / num_pixels + t / steps) % 1.0
+            rgb = [int(c * 255) for c in colorsys.hsv_to_rgb(hue, 1.0, 1.0)]
+            pixels[i] = tuple(rgb)
 
-            interpolation_factor = t / steps
-            red = int(color_start[0] + (color_end[0] - color_start[0]) * interpolation_factor)
-            green = int(color_start[1] + (color_end[1] - color_start[1]) * interpolation_factor)
-            blue = int(color_start[2] + (color_end[2] - color_start[2]) * interpolation_factor)
-
-            pixels[i] = (red, green, blue)
-
-            pixels.show()
+        pixels.show()
+        time.sleep(duration / steps)
         
 
 while True:
