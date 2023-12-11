@@ -8,12 +8,12 @@ num_pixels = 500
 pixels = neopixel.NeoPixel(board.D18, num_pixels, auto_write=False)
 
 def update_pixels():
-    for i in range(num_pixels-1, 0, -1):
+    for i in range(num_pixels):
         gradient = i / (num_pixels - 1)
         red = int(255 * (1 - gradient))
         green = int(255 * gradient)
         blue = 0
-        pixels[i] = (red, green, blue)
+        pixels[num_pixels - i] = (red, green, blue)
 
 
     pixels.show()
