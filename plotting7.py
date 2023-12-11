@@ -30,7 +30,7 @@ def color_variation_animation():
 
             pixels[i] = (red, green, blue)
 
-        pixels.show()
+            pixels.show()
         
 
 while True:
