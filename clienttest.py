@@ -1,18 +1,17 @@
 import tkinter as tk
 from tkinter import ttk
 import socket
+
 host = '192.168.1.144'
-
-
 port = 4444
 
 root = tk.Tk()
 root.title("LED Color Control")
 
 def send_colors():
-    red = red_slider.get()
-    green = green_slider.get()
-    blue = blue_slider.get()
+    red = int(round(red_slider.get()))
+    green = int(round(green_slider.get()))
+    blue = int(round(blue_slider.get()))
 
     color_data = f"{red},{green},{blue}"
 
