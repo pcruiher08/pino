@@ -14,7 +14,7 @@ def update_pixels():
             green = int(127.5 + 127.5 * math.cos(2 * math.pi * i / num_pixels + t / 30))
             blue = int(127.5 + 127.5 * math.cos(2 * math.pi * i / num_pixels + t / 20))
             pixels[i] = (red, green, blue)
-        pixels.show()
+    pixels.show()
 
 while True:
     update_pixels()
