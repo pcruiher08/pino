@@ -10,7 +10,7 @@ pixels = neopixel.NeoPixel(board.D18, num_pixels, auto_write=False)
 
 colors = [
     (255, 0, 0),   #Red
-    #(0, 255, 0),   #Green
+    (0, 255, 0),   #Green
     (0, 0, 255),   #Blue
 ]
 
@@ -20,8 +20,8 @@ def color_variation_animation():
 
     for t in range(steps):
         for i in range(num_pixels):
-            hue = (i / num_pixels + t / steps) % 2.0
-            rgb = [int(c * 255) for c in colorsys.hsv_to_rgb(hue * 20, 1.0, 1.0)]
+            hue = (i / num_pixels + t / steps) % 1.0
+            rgb = [int(c * 255) for c in colorsys.hsv_to_rgb(hue * 2, 1.0, 1.0)]
             pixels[i] = tuple(rgb)
 
         pixels.show()
