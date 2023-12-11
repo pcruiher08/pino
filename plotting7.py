@@ -10,7 +10,7 @@ pixels = neopixel.NeoPixel(board.D18, num_pixels, auto_write=False)
 
 colors = [
     (255, 0, 0),   #Red
-    (0, 255, 0),   #Green
+    #(0, 255, 0),   #Green
     (0, 0, 255),   #Blue
 ]
 
