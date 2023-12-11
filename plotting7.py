@@ -15,7 +15,7 @@ colors = [
 ]
 
 def color_variation_animation():
-    duration = 10  
+    duration = 2 
     steps = 100     
 
     for t in range(steps):
@@ -25,7 +25,7 @@ def color_variation_animation():
             pixels[i] = tuple(rgb)
 
         pixels.show()
-        #time.sleep(duration / steps)
+        time.sleep(duration / steps)
         
 
 while True:
