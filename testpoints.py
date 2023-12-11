@@ -1,7 +1,7 @@
 import json
 import matplotlib.pyplot as plt
 
-input_filename = "led_coordinates2.json"
+input_filename = "led_coordinates3.json"
 with open(input_filename, "r") as json_file:
     led_points = json.load(json_file)
 
