@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Virtualenvs
+.venv/
+venv/
+env/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+.cph/
+
+# Large captured media (keep these local)
+media/
+
+# Generated capture artifacts
+printables/
+camera_calibration.npz

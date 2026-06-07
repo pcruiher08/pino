@@ -1,0 +1,5 @@
+# Laptop side: mapping (OpenCV + ArUco), 3D capture, plotting, simulator, studio.
+# opencv-contrib-python (not plain opencv-python) is required for cv2.aruco.
+opencv-contrib-python
+numpy
+matplotlib

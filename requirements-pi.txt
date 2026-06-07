@@ -1,0 +1,5 @@
+# Raspberry Pi side: drives the physical WS2812/NeoPixel strip on GPIO D18.
+# These require Raspberry Pi hardware and do NOT install on a laptop.
+adafruit-circuitpython-neopixel
+adafruit-blinka
+rpi_ws281x
